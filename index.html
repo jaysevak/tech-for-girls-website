@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech For Girls - Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <h1>Tech For Girls</h1>
+            </div>
+            <p class="subtitle">Join our amazing community of women in tech!</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Registration Form -->
+            <div class="form-container" id="formContainer">
+                <h2><i class="fas fa-user-plus"></i> Registration Form</h2>
+                
+                <form id="registrationForm">
+                    <!-- Basic Details Section -->
+                    <div class="form-section">
+                        <h3>Basic Details</h3>
+                        
+                        <div class="input-group">
+                            <label for="name">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phone">
+                                <i class="fas fa-phone"></i> Phone Number
+                            </label>
+                            <div class="phone-input-group">
+                                <select id="countryCode" name="countryCode" required>
+                                    <option value="">Select Country</option>
+                                    <option value="+91" data-length="10">🇮🇳 India (+91)</option>
+                                    <option value="+1" data-length="10">🇺🇸 USA (+1)</option>
+                                    <option value="+44" data-length="10">🇬🇧 UK (+44)</option>
+                                    <option value="+86" data-length="11">🇨🇳 China (+86)</option>
+                                    <option value="+81" data-length="10">🇯🇵 Japan (+81)</option>
+                                    <option value="+49" data-length="11">🇩🇪 Germany (+49)</option>
+                                    <option value="+33" data-length="10">🇫🇷 France (+33)</option>
+                                    <option value="+61" data-length="9">🇦🇺 Australia (+61)</option>
+                                    <option value="+55" data-length="11">🇧🇷 Brazil (+55)</option>
+                                    <option value="+7" data-length="10">🇷🇺 Russia (+7)</option>
+                                </select>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                            </div>
+                            <div id="phoneError" class="error-message"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Email ID
+                            </label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="college">
+                                <i class="fas fa-graduation-cap"></i> College / Department
+                            </label>
+                            <input type="text" id="college" name="college" required>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Sharing Section -->
+                    <div class="form-section">
+                        <h3>Share with Friends</h3>
+                        <p class="share-instruction">Share with 5 friends to complete registration!</p>
+                        
+                        <button type="button" id="whatsappBtn" class="whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                        </button>
+                        
+                        <div class="click-counter">
+                            <span>Click count: <span id="clickCount">0</span>/5</span>
+                        </div>
+                        
+                        <div id="sharingComplete" class="sharing-complete" style="display: none;">
+                            <i class="fas fa-check-circle"></i> Sharing complete. Please continue.
+                        </div>
+                    </div>
+
+                    <!-- Screenshot Upload Section -->
+                    <div class="form-section">
+                        <h3>Upload Screenshot</h3>
+                        <div class="upload-area">
+                            <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+                            <label for="screenshot" class="upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose file or drag here</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="submit-btn" disabled>
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                </form>
+            </div>
+
+            <!-- Thank You Message -->
+            <div class="thank-you-message" id="thankYouMessage" style="display: none;">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>🎉 Your submission has been recorded.</h2>
+                <p>Thanks for being part of Tech for Girls!</p>
+                <div class="celebration">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                
+                <!-- Action Options -->
+                <div class="action-options">
+                    <h3>What would you like to do next?</h3>
+                    <div class="option-buttons">
+                        <button type="button" id="feedbackBtn" class="option-btn feedback-btn">
+                            <i class="fas fa-comment-alt"></i>
+                            Give Feedback
+                        </button>
+                        <button type="button" id="anotherFormBtn" class="option-btn another-form-btn">
+                            <i class="fas fa-plus-circle"></i>
+                            Submit Another Response
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feedback Form -->
+            <div class="feedback-container" id="feedbackContainer" style="display: none;">
+                <h2><i class="fas fa-star"></i> Your Feedback</h2>
+                <form id="feedbackForm">
+                    <div class="input-group">
+                        <label for="rating">
+                            <i class="fas fa-star"></i> Rate your experience
+                        </label>
+                        <div class="rating-stars">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="feedback">
+                            <i class="fas fa-comment"></i> Your Comments
+                        </label>
+                        <textarea id="feedback" name="feedback" rows="4" placeholder="Share your thoughts..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Tech For Girls Community. Empowering women in technology.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Handle option buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const feedbackBtn = document.getElementById('feedbackBtn');
+            const anotherFormBtn = document.getElementById('anotherFormBtn');
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            // Feedback button click
+            feedbackBtn.addEventListener('click', function() {
+                // Reset star ratings when opening feedback form
+                const stars = document.querySelectorAll('.star');
+                stars.forEach(star => {
+                    star.innerHTML = '☆'; // Empty star
+                    star.style.color = '#ddd';
+                });
+                document.getElementById('rating').value = '';
+                
+                thankYouMessage.style.display = 'none';
+                feedbackContainer.style.display = 'block';
+            });
+            
+            // Another form button click - show registration form again
+            anotherFormBtn.addEventListener('click', function() {
+                // Reset form
+                document.getElementById('registrationForm').reset();
+                
+                // Reset file upload label
+                document.querySelector('.upload-label span').textContent = 'Choose file or drag here';
+                
+                // Reset the app instance using the reset function
+                if (window.techForGirlsApp) {
+                    window.techForGirlsApp.resetSharing();
+                    window.techForGirlsApp.isSubmitted = false;
+                }
+                
+                // Hide thank you message and show form
+                thankYouMessage.style.display = 'none';
+                document.getElementById('formContainer').style.display = 'block';
+            });
+            
+            // Star rating functionality
+            const stars = document.querySelectorAll('.star');
+            const ratingInput = document.getElementById('rating');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-rating');
+                    ratingInput.value = rating;
+                    
+                    // Update star display
+                    stars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.innerHTML = '★'; // Filled star
+                            s.style.color = '#ffd700';
+                        } else {
+                            s.innerHTML = '☆'; // Empty star
+                            s.style.color = '#ddd';
+                        }
+                    });
+                });
+            });
+            
+            // Feedback form submission
+            document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your feedback!');
+                
+                // Reset forms
+                document.getElementById('registrationForm').reset();
+                document.getElementById('feedbackForm').reset();
+                
+                // Reset star ratings to default (no selection)
+                const stars = document.querySelectorAll('.star');
+                stars.forEach(star => {
+                    star.innerHTML = '☆'; // Empty star
+                    star.style.color = '#ddd';
+                });
+                document.getElementById('rating').value = '';
+                
+                // Reset file upload label
+                document.querySelector('.upload-label span').textContent = 'Choose file or drag here';
+                
+                // Reset the app instance using the reset function
+                if (window.techForGirlsApp) {
+                    window.techForGirlsApp.resetSharing();
+                    window.techForGirlsApp.isSubmitted = false;
+                }
+                
+                feedbackContainer.style.display = 'none';
+                document.getElementById('formContainer').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

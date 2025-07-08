@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech For Girls - Demo Instructions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .demo-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        .demo-link {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+        .demo-link:hover {
+            transform: translateY(-2px);
+        }
+        .instructions {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:before {
+            content: "✅ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🚀 Tech For Girls - Registration Website</h1>
+        
+        <a href="index.html" class="demo-link">
+            🌟 Launch Registration Website
+        </a>
+        
+        <div class="instructions">
+            <h3>📋 Demo Instructions</h3>
+            <p>This is a fully functional registration website with the following features:</p>
+            
+            <ul class="feature-list">
+                <li>Modern responsive design</li>
+                <li>Registration form with validation</li>
+                <li>WhatsApp sharing with click counter</li>
+                <li>File upload functionality</li>
+                <li>Local storage to prevent duplicate submissions</li>
+                <li>Smooth animations and transitions</li>
+                <li>Mobile-friendly interface</li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>🧪 How to Test</h3>
+            <ol>
+                <li><strong>Fill the form:</strong> Enter your details in all required fields</li>
+                <li><strong>Share on WhatsApp:</strong> Click the WhatsApp button 5 times to complete sharing</li>
+                <li><strong>Upload file:</strong> Select any image file as a screenshot</li>
+                <li><strong>Submit:</strong> Click submit to see the success message</li>
+                <li><strong>Test persistence:</strong> Refresh the page to see that submission is remembered</li>
+            </ol>
+        </div>
+        
+        <div class="instructions">
+            <h3>⚙️ Setup for Production</h3>
+            <p>To make this fully functional with Google Sheets:</p>
+            <ol>
+                <li>Create a Google Sheet for data storage</li>
+                <li>Deploy the Google Apps Script (provided in google-apps-script.js)</li>
+                <li>Update the script URL in script.js</li>
+                <li>Upload to GitHub and enable GitHub Pages</li>
+            </ol>
+            <p>See README.md for detailed setup instructions.</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>🎨 Customization</h3>
+            <p>You can easily customize:</p>
+            <ul>
+                <li><strong>Colors:</strong> Modify CSS variables in style.css</li>
+                <li><strong>Content:</strong> Update text in index.html</li>
+                <li><strong>Functionality:</strong> Extend features in script.js</li>
+                <li><strong>Styling:</strong> Add your own CSS animations</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #666;">
+            Built with ❤️ for Tech For Girls Community
+        </p>
+    </div>
+</body>
+</html>
