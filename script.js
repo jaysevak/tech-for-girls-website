@@ -15,76 +15,19 @@ class TechForGirlsRegistration {
     }
 
     init() {
-        this.clearAllDataOnRefresh();
         this.checkSubmissionStatus();
         this.bindEvents();
         this.loadClickCount();
     }
-    
-    // Clear all data on page refresh for fresh start
-    clearAllDataOnRefresh() {
-        // Clear all localStorage data
-        localStorage.removeItem('techForGirls_submitted');
-        localStorage.removeItem('techForGirls_clickCount');
-        
-        // Reset all form elements
-        const form = document.getElementById('registrationForm');
-        if (form) form.reset();
-        
-        const feedbackForm = document.getElementById('feedbackForm');
-        if (feedbackForm) feedbackForm.reset();
-        
-        // Reset click counter display
-        const clickCountElement = document.getElementById('clickCount');
-        if (clickCountElement) clickCountElement.textContent = '0';
-        
-        // Reset WhatsApp button
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        if (whatsappBtn) {
-            whatsappBtn.disabled = false;
-            whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Share on WhatsApp';
-        }
-        
-        // Hide sharing complete message
-        const sharingComplete = document.getElementById('sharingComplete');
-        if (sharingComplete) sharingComplete.style.display = 'none';
-        
-        // Reset submit button
-        const submitBtn = document.getElementById('submitBtn');
-        if (submitBtn) submitBtn.disabled = true;
-        
-        // Reset file upload label
-        const uploadLabel = document.querySelector('.upload-label span');
-        if (uploadLabel) uploadLabel.textContent = 'Choose file or drag here';
-        
-        // Show registration form, hide others
-        const formContainer = document.getElementById('formContainer');
-        const thankYouMessage = document.getElementById('thankYouMessage');
-        const feedbackContainer = document.getElementById('feedbackContainer');
-        
-        if (formContainer) formContainer.style.display = 'block';
-        if (thankYouMessage) thankYouMessage.style.display = 'none';
-        if (feedbackContainer) feedbackContainer.style.display = 'none';
-        
-        // Reset star ratings
-        const stars = document.querySelectorAll('.star');
-        stars.forEach(star => {
-            star.innerHTML = '☆'; // Empty star
-            star.style.color = '#ddd';
-        });
-        const ratingInput = document.getElementById('rating');
-        if (ratingInput) ratingInput.value = '';
-        
-        // Reset instance variables
-        this.clickCount = 0;
-        this.isSubmitted = false;
-    }
 
     // Check if user has already submitted
     checkSubmissionStatus() {
-        // Don't auto-show thank you message on page refresh
-        // Let user fill form again if they want
-        this.isSubmitted = false;
+        const submitted = localStorage.getItem('techForGirls_submitted');
+        if (submitted === 'true') {
+            this.showThankYouMessage();
+            this.disableAllInputs();
+            this.isSubmitted = true;
+        }
     }
 
     // Bind all event listeners
@@ -352,6 +295,9 @@ class TechForGirlsRegistration {
             localStorage.setItem('techForGirls_submitted', 'true');
             this.isSubmitted = true;
             
+            // Disable all inputs and buttons
+            this.disableAllInputs();
+            
             // Show success message
             this.showThankYouMessage();
             
@@ -400,6 +346,23 @@ class TechForGirlsRegistration {
         */
         
         return true;
+    }
+
+    // Disable all form inputs and buttons
+    disableAllInputs() {
+        const form = document.getElementById('registrationForm');
+        const inputs = form.querySelectorAll('input, select, button');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        
+        inputs.forEach(input => {
+            input.disabled = true;
+            input.style.opacity = '0.5';
+            input.style.cursor = 'not-allowed';
+        });
+        
+        whatsappBtn.disabled = true;
+        whatsappBtn.style.opacity = '0.5';
+        whatsappBtn.style.cursor = 'not-allowed';
     }
 
     // Show thank you message
